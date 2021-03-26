@@ -49,7 +49,9 @@ namespace Huobi.SDK.Core.Client.WebSocketClientBase
         private void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             double elapsedSecond = (DateTime.UtcNow - _lastReceivedTime).TotalSeconds;
-            _logger.Log(Log.LogLevel.Trace, $"WebSocket received data {elapsedSecond.ToString("0.00")} sec ago");
+
+            if (elapsedSecond > RECONNECT_WAIT_SECOND)
+                _logger.Log(Log.LogLevel.Trace, $"WebSocket received data {elapsedSecond.ToString("0.00")} sec ago");
 
             if (elapsedSecond > RECONNECT_WAIT_SECOND && elapsedSecond <= RENEW_WAIT_SECOND)
             {
@@ -133,10 +135,10 @@ namespace Huobi.SDK.Core.Client.WebSocketClientBase
                 var pingMessage = JsonConvert.DeserializeObject<PingMessage>(data);
                 if (pingMessage != null && pingMessage.ping != 0)
                 {
-                    _logger.Log(Log.LogLevel.Trace, $"WebSocekt received data, ping={pingMessage.ping}");
+                    //_logger.Log(Log.LogLevel.Trace, $"WebSocekt received data, ping={pingMessage.ping}");
                     string pongData = $"{{\"pong\":{pingMessage.ping}}}";
                     _WebSocket.Send(pongData);
-                    _logger.Log(Log.LogLevel.Trace, $"WebSocket replied data, pong={pingMessage.ping}");
+                    //_logger.Log(Log.LogLevel.Trace, $"WebSocket replied data, pong={pingMessage.ping}");
                 }
                 else
                 {

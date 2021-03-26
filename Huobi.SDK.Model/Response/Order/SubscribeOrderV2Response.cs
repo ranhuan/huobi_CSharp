@@ -123,6 +123,11 @@ namespace Huobi.SDK.Model.Response.Order
             /// Last activity time, available for cancellation eventType
             /// </summary>
             public long lastActTime;
+
+            /// <summary>
+            /// Last activity time, available for cancellation eventType
+            /// </summary>
+            public string orderSource;
         }
     }
 }

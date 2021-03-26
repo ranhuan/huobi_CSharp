@@ -154,12 +154,12 @@ namespace Huobi.SDK.Core.Client.WebSocketClientBase
                         {
                             long ts = pingMessageV2.data.ts;
 
-                            _logger.Log(Log.LogLevel.Trace, $"WebSocket received data, ping={ts}");
+                            //_logger.Log(Log.LogLevel.Trace, $"WebSocket received data, ping={ts}");
 
                             string pongData = $"{{\"action\": \"pong\", \"data\": {{\"ts\":{ts} }} }}";
                             _WebSocket.Send(pongData);
 
-                            _logger.Log(Log.LogLevel.Trace, $"WebSocket replied data, pong={ts}");
+                            //_logger.Log(Log.LogLevel.Trace, $"WebSocket replied data, pong={ts}");
                         }
                         break;
                     }

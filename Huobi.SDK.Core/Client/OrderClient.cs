@@ -89,6 +89,7 @@ namespace Huobi.SDK.Core.Client
         {
             string url = _urlBuilder.Build(GET_METHOD, "/v1/order/openOrders", request);
 
+            Console.WriteLine(url);
             return await HttpRequest.GetAsync<GetOpenOrdersResponse>(url);
         }
 

@@ -23,7 +23,7 @@
         /// <summary>
         /// Response body
         /// </summary>
-        public Candlestick[] data;
+        public SubscribeCandlestickResponse.Tick[] data;
 
         /// <summary>
         /// Candlestick detail

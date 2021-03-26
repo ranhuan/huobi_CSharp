@@ -16,6 +16,11 @@
         public string ch;
 
         /// <summary>
+        /// Data response
+        /// </summary>
+        public string rep;
+
+        /// <summary>
         /// Respond timestamp in millisecond
         /// </summary>
         public long ts;
